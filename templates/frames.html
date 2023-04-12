@@ -2,7 +2,7 @@
 {% block content %}
 <h1>Угадайте фильм по кадру</h1>
 {% set num = 0 %}
-{%set d = 'img/' + data[num]%}
+{%set d = 'img/' + filenames[num]%}
 
 <form action="" method="post" novalidate>
     <div>
@@ -12,9 +12,9 @@
     <div>
         {{d, num, loop.index}}
         {{ field.label() }}
-        {%set d = 'img/' + data[loop.index - 1]%}
+        {%set d = 'img/' + filenames[loop.index - 1]%}
         <img src="{{url_for('static', filename=d)}}"
-             alt="здесь должна была быть картинка, но не нашлась" , width="300">
+             alt="здесь должна была быть картинка, но не нашлась", width="300">
         {% set num = num + 1%}
 
         {{ field() }}

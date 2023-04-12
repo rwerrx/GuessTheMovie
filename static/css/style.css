@@ -1,25 +1,13 @@
-.navbar1{
- background:#F97300;
+.text-color {
+    color: #97010E;
 }
-.nav-link1 , .navbar-brand1{
- color: #f4f4f4;
- cursor: pointer;
-}
-.nav-link1{
- margin-right: 1em !important;
-}
-.nav-link1:hover{
- background: #f4f4f4;
- color: #f97300;
-}
-.navbar-collapse1{
- justify-content: flex-end;
-}
-.navbar-toggler1{
-  background:#fff !important;
-}
-.header1{
- background-attachment: fixed;
- background-size: cover;
- background-position: center;
-}
+"opacity": (
+  property: opacity,
+  values: (
+    0: 0,
+    25: .25,
+    50: .5,
+    75: .75,
+    100: 1,
+  )
+)

@@ -1,12 +1,14 @@
 from flask import Flask, render_template, redirect
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from data import db_session
+from data.films import Films
+from data.frames import Frames
 from data.users import User
 from forms.user import RegisterForm
 import sqlite3
-
-from qwerty_2.qwerty.flask.forms.LoginForm import LoginForm
-from qwerty_2.qwerty.flask.forms.frames_form import AnswerForm
+from random import shuffle
+from forms.LoginForm import LoginForm
+from forms.frames_form import AnswerForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
@@ -58,19 +60,24 @@ def logout():
 
 @app.route('/frames')
 def frames():
-    con = sqlite3.connect('db/base.sqlite')
-    cursor = con.cursor()
-    query1 = 'SELECT filename FROM frames WHERE film_id IN (SELECT id FROM films)'
-    result = cursor.execute(query1)
-    data = result.fetchall()
-    con.close()
-    print(data)
+    films_title = []
+    filenames = []
+    db_sess = db_session.create_session()
+    for film in db_sess.query(Films).filter(Frames.film_id == Films.id):
+        films_title.append(film.title)
+    for filename in db_sess.query(Frames).filter(Frames.film_id == Films.id):
+        filenames.append(filename.filename)
+
     form = AnswerForm()
-    form.answer2.choices = ['1', '2']
-    form.answer3.choices = [4, 5]
+    print(films_title)
+    shuffle(films_title)
+    form.answer2.choices = [films_title[:2]]
+    shuffle(films_title)
+    form.answer3.choices = [films_title[:2]]
+
     if form.validate_on_submit():
         return '...'
-    return render_template('frames.html', title='угадай по кадрам', data=[i[0] for i in data], form=form)
+    return render_template('frames.html', title='угадай по кадрам', form=form, films=films_title, filenames=filenames)
 
 
 @app.route('/location')
