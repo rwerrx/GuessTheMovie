@@ -6,7 +6,7 @@ from data.frames import Frames
 from data.users import User
 from forms.user import RegisterForm
 import sqlite3
-from random import shuffle
+from random import shuffle, choices, choice
 from forms.LoginForm import LoginForm
 from forms.frames_form import AnswerForm
 
@@ -63,27 +63,64 @@ def frames():
     films_title = []
     filenames = []
     db_sess = db_session.create_session()
-    for film in db_sess.query(Films).filter(Frames.film_id == Films.id):
-        films_title.append(film.title)
-    for filename in db_sess.query(Frames).filter(Frames.film_id == Films.id):
-        filenames.append(filename.filename)
+    all_films = db_sess.query(Films).all()
+    # for film in db_sess.query(Films).all():
+        # films_title.append(film.title)
+    frames = choices(db_sess.query(Frames).all(), k=5)
+        # filenames.append(filename.filename)
 
     form = AnswerForm()
-    form.answer1.choices = films_title[:3]
-    shuffle(films_title)
-    form.answer2.choices = films_title[:3]
-    shuffle(films_title)
-    form.answer3.choices = films_title[:3]
-    shuffle(films_title)
-    form.answer4.choices = films_title[:3]
+    answers = [db_sess.query(Films).filter(Films.id == frames[0].film_id).first().title]
+    while len(answers) != 4:
+        film = choice(all_films).title
+        if film not in answers:
+            answers.append(film)
+    shuffle(answers)
+    form.answer1.choices = answers
 
+    answers2 = [db_sess.query(Films).filter(Films.id == frames[1].film_id).first().title]
+    while len(answers2) != 4:
+        film = choice(all_films).title
+        if film not in answers2:
+            answers2.append(film)
+    shuffle(answers2)
+    form.answer2.choices = answers2
+
+    answers3 = [db_sess.query(Films).filter(Films.id == frames[2].film_id).first().title]
+    while len(answers3) != 4:
+        film = choice(all_films).title
+        if film not in answers3:
+            answers3.append(film)
+    shuffle(answers3)
+    form.answer3.choices = answers3
+
+    answers4 = [db_sess.query(Films).filter(Films.id == frames[3].film_id).first().title]
+    while len(answers4) != 4:
+        film = choice(all_films).title
+        if film not in answers4:
+            answers4.append(film)
+    shuffle(answers4)
+    form.answer4.choices = answers4
+
+    answers5 = [db_sess.query(Films).filter(Films.id == frames[4].film_id).first().title]
+    while len(answers5) != 4:
+        film = choice(all_films).title
+        if film not in answers5:
+            answers5.append(film)
+    shuffle(answers5)
+    form.answer5.choices = answers5
+    # shuffle(films_title)
+    # form.answer2.choices = films_title[:len(filenames)]
+    # shuffle(films_title)
+    # form.answer3.choices = films_title[:len(filenames)]
+    # shuffle(films_title)
+    # form.answer4.choices = films_title[:len(filenames)]
     if form.validate_on_submit():
         return '...'
     return render_template('frames.html',
                            title='угадай по кадрам',
                            form=form,
-                           films=films_title,
-                           filenames=filenames)
+                           filenames=[i.filename for i in frames])
 
 
 @app.route('/location')
