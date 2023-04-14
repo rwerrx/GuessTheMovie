@@ -3,7 +3,7 @@ from wtforms import PasswordField, StringField, TextAreaField, SubmitField, Emai
 from wtforms.validators import DataRequired
 
 
-class AnswerForm(FlaskForm):
+class FramesAnswerForm(FlaskForm):
     answer1 = RadioField(choices=[])
     answer2 = RadioField(choices=[])
     answer3 = RadioField(choices=[])

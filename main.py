@@ -3,12 +3,14 @@ from flask_login import LoginManager, login_user, logout_user, login_required, c
 from data import db_session
 from data.films import Films
 from data.frames import Frames
+from data.soundtracks import Soundtracks
 from data.users import User
+from forms.soundtracks_form import SoundtrackAnswerForm
 from forms.user import RegisterForm
 import sqlite3
 from random import shuffle, choices, choice
 from forms.LoginForm import LoginForm
-from forms.frames_form import AnswerForm
+from forms.frames_form import FramesAnswerForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
@@ -25,7 +27,58 @@ def index():
 
 @app.route("/soundtrack")
 def soundtrack():
-    return 'саундтрек'
+    films_title = []
+    filenames = []
+    db_sess = db_session.create_session()
+    all_films = db_sess.query(Films).all()
+    for film in db_sess.query(Films).all():
+    films_title.append(film.title)
+    soundtracks = choices(db_sess.query(Soundtracks).all(), k=5)
+    filenames.append(filename.filename)
+
+    form = SoundtrackAnswerForm()
+    answers = [db_sess.query(Films).filter(Films.id == soundtracks[0].film_id).first().title]
+    while len(answers) != 4:
+        film = choice(all_films).title
+        if film not in answers:
+            answers.append(film)
+    shuffle(answers)
+    form.answer1.choices = answers
+    #
+    # answers2 = [db_sess.query(Films).filter(Films.id == soundtracks[1].film_id).first().title]
+    # while len(answers2) != 4:
+    #     film = choice(all_films).title
+    #     if film not in answers2:
+    #         answers2.append(film)
+    # shuffle(answers2)
+    # form.answer2.choices = answers2
+    #
+    # answers3 = [db_sess.query(Films).filter(Films.id == soundtracks[2].film_id).first().title]
+    # while len(answers3) != 4:
+    #     film = choice(all_films).title
+    #     if film not in answers3:
+    #         answers3.append(film)
+    # shuffle(answers3)
+    # form.answer3.choices = answers3
+    #
+    # answers4 = [db_sess.query(Films).filter(Films.id == soundtracks[3].film_id).first().title]
+    # while len(answers4) != 4:
+    #     film = choice(all_films).title
+    #     if film not in answers4:
+    #         answers4.append(film)
+    # shuffle(answers4)
+    # form.answer4.choices = answers4
+    #
+    # answers5 = [db_sess.query(Films).filter(Films.id == soundtracks[4].film_id).first().title]
+    # while len(answers5) != 4:
+    #     film = choice(all_films).title
+    #     if film not in answers5:
+    #         answers5.append(film)
+    # shuffle(answers5)
+    # form.answer5.choices = answers5
+
+    return render_template('soundtrack.html',
+                           title='угадай по саундтреку')
 
 
 @login_manager.user_loader
@@ -65,11 +118,11 @@ def frames():
     db_sess = db_session.create_session()
     all_films = db_sess.query(Films).all()
     # for film in db_sess.query(Films).all():
-        # films_title.append(film.title)
+    # films_title.append(film.title)
     frames = choices(db_sess.query(Frames).all(), k=5)
-        # filenames.append(filename.filename)
+    # filenames.append(filename.filename)
 
-    form = AnswerForm()
+    form = FramesAnswerForm()
     answers = [db_sess.query(Films).filter(Films.id == frames[0].film_id).first().title]
     while len(answers) != 4:
         film = choice(all_films).title
