@@ -65,9 +65,9 @@ def frames():
     db_sess = db_session.create_session()
     all_films = db_sess.query(Films).all()
     # for film in db_sess.query(Films).all():
-        # films_title.append(film.title)
+    # films_title.append(film.title)
     frames = choices(db_sess.query(Frames).all(), k=5)
-        # filenames.append(filename.filename)
+    # filenames.append(filename.filename)
 
     form = AnswerForm()
     answers = [db_sess.query(Films).filter(Films.id == frames[0].film_id).first().title]
