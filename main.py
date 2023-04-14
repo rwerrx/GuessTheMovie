@@ -69,20 +69,31 @@ def frames():
         filenames.append(filename.filename)
 
     form = AnswerForm()
-    print(films_title)
+    form.answer1.choices = films_title[:3]
     shuffle(films_title)
-    form.answer2.choices = [films_title[:2]]
+    form.answer2.choices = films_title[:3]
     shuffle(films_title)
-    form.answer3.choices = [films_title[:2]]
+    form.answer3.choices = films_title[:3]
+    shuffle(films_title)
+    form.answer4.choices = films_title[:3]
 
     if form.validate_on_submit():
         return '...'
-    return render_template('frames.html', title='угадай по кадрам', form=form, films=films_title, filenames=filenames)
+    return render_template('frames.html',
+                           title='угадай по кадрам',
+                           form=form,
+                           films=films_title,
+                           filenames=filenames)
 
 
 @app.route('/location')
 def location():
     return 'локация'
+
+
+@app.route('/rules')
+def rules():
+    return render_template('rules.html')
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -93,12 +104,14 @@ def reqister():
     form = RegisterForm()
     if form.validate_on_submit():
         if form.password.data != form.password_again.data:
-            return render_template('register.html', title='Регистрация',
+            return render_template('register.html',
+                                   title='Регистрация',
                                    form=form,
                                    message="Пароли не совпадают")
         db_sess = db_session.create_session()
         if db_sess.query(User).filter(User.email == form.email.data).first():
-            return render_template('register.html', title='Регистрация',
+            return render_template('register.html',
+                                   title='Регистрация',
                                    form=form,
                                    message="Такой пользователь уже есть")
         user = User(
@@ -109,7 +122,8 @@ def reqister():
         db_sess.add(user)
         db_sess.commit()
         return redirect('/login')
-    return render_template('register.html', title='Регистрация', form=form)
+    return render_template('register.html',
+                           title='Регистрация', form=form)
 
 
 def main():

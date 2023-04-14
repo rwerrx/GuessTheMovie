@@ -17,7 +17,7 @@
             <font color="#97010E" size="7" face="Arial">
             <p class="navbar-brand border border-0 text-secondary text-color">GUESS THE MOVIE</p>
             </font>
-            <a class="navbar-brand border border-0 text-color" href="#">Правила</a>
+            <a class="navbar-brand border border-0 text-color" href="{{ url_for('rules') }}">rules of the game</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -26,10 +26,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active text-color" aria-current="page" href="#">нome</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link text-color" href="#">Link</a>
                     </li>
                 </ul>
                 <div>
@@ -37,8 +37,8 @@
                     <a class="navbar-brand" href="/logout">{{ current_user.name }}</a>
                     {% else %}
                     <p>
-                        <a class="btn btn-primary bg-danger text-white" href="/register">Sign up</a>
-                        <a class="btn btn-success bg-danger opacity-50" href="/login">Sign in</a>
+                        <a class="btn bg-danger text-white" href="/register">Sign up</a>
+                        <a class="btn bg-danger opacity-25" href="/login">Sign in</a>
                     </p>
                     {% endif %}
                 </div>

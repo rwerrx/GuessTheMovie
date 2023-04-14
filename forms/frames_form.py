@@ -4,7 +4,10 @@ from wtforms.validators import DataRequired
 
 
 class AnswerForm(FlaskForm):
+    answer1 = RadioField(choices=[])
     answer2 = RadioField(choices=[])
     answer3 = RadioField(choices=[])
+    answer4 = RadioField(choices=[])
+    answer5 = RadioField(choices=[])
 
     submit = SubmitField('Ответить')
