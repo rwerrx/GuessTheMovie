@@ -6,7 +6,7 @@ from data.frames import Frames
 from data.users import User
 from forms.user import RegisterForm
 import sqlite3
-from random import shuffle, choices, choice
+from random import shuffle, choices, choice, sample
 from forms.LoginForm import LoginForm
 from forms.frames_form import AnswerForm
 
@@ -66,7 +66,7 @@ def frames():
     all_films = db_sess.query(Films).all()
     # for film in db_sess.query(Films).all():
     # films_title.append(film.title)
-    frames = choices(db_sess.query(Frames).all(), k=5)
+    frames = sample(db_sess.query(Frames).all(), k=5)
     # filenames.append(filename.filename)
 
     form = AnswerForm()

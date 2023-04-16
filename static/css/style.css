@@ -11,3 +11,42 @@
     100: 1,
   )
 )
+@font-face {
+	font-family: 'abril';
+	src: url(/fonts/AbrilFatface-Regular.ttf);
+}
+.navbar{
+ background:#a0302d;
+}
+.nav-link , .navbar-brand{
+ color: #818181;
+ cursor: pointer;
+}
+.nav-link{
+ margin-right: 1em !important;
+}
+.nav-link:hover{
+ background: #c09669;
+ color: #818181;
+}
+.navbar-collapse{
+ justify-content: flex-end;
+}
+.navbar-toggler{
+  background:#fff !important;
+}
+.header{
+ background-image: url('static/img/headerback.jpg');
+ background-attachment: fixed;
+ background-size: cover;
+ background-position: center;
+}
+center {
+  top: 50%; /* Отступ в процентах от верхнего края окна */
+  left: 50%; /* Отступ в процентах от левого края окна */
+  width: 450px; /* Ширина блока */
+  height: 450px; /* Высота блока */
+  position: absolute; /* Абсолютное позиционирование блока */
+  margin-top: -225px; /* Отрицательный отступ от верхнего края страницы, должен равняться половине высоты блока со знаком минус */
+  margin-left: -225px; /* Отрицательный отступ от левого края страницы, должен равняться половине высоты блока со знаком минус */
+}

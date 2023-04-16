@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Угадайте фильм по кадру</h1>
+<h1 class="font-abril">guess the movie by frames</h1>
 
 <form action="" method="post" novalidate>
     <div>
@@ -9,8 +9,8 @@
     {% for field in form if field.name != 'csrf_token' and field.name != 'submit' %}
     <div>
         {%set d = 'img/' + filenames[loop.index - 1]%}
-        <img src="{{url_for('static', filename=d)}}"
-             alt="здесь должна была быть картинка, но не нашлась" width="400">
+        <img class="text-center rounded-3 border border-5 border-dark" align="middle" src="{{url_for('static', filename=d)}}"
+             alt="здесь должна была быть картинка, но не нашлась" width="500">
 
         {{ field() }}
         {% for error in field.errors %}
