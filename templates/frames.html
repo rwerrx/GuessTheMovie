@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Угадайте фильм по кадру</h1>
+<h1>Guess the movie by frame</h1>
 
-<form action="" method="post" novalidate>
+<form action="" method="post" >
     <div>
         {{ form.csrf_token }}
     </div>
@@ -12,7 +12,16 @@
         <img src="{{url_for('static', filename=d)}}"
              alt="здесь должна была быть картинка, но не нашлась" width="400">
 
-        {{ field() }}
+
+        {% for subfield in field %}
+            <tr>
+                <td>{{ subfield }}</td>
+                <td>{{ subfield.label }}</td>
+            </tr>
+        {% endfor %}
+
+
+
         {% for error in field.errors %}
         <div class="error">{{ error }}</div>
         {% endfor %}

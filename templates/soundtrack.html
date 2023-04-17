@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Угадайте фильм по саундтреку</h1>
+<h1>guess the movie from the soundtrack</h1>
 
 <form action="" method="post" novalidate>
     <div>
@@ -11,7 +11,8 @@
         {%set d = 'mus/' + filenames[loop.index - 1]%}
         <figure>
             <audio
-                    src="./static/mus/Fight_Club.mp3">
+                    controls
+                    src="{{url_for('static', filename=d)}}">
             </audio>
         </figure>
         {{ field() }}
@@ -26,4 +27,3 @@
 
 {% endblock %}
 
-{% endblock %}

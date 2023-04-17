@@ -9,5 +9,4 @@ class SoundtrackAnswerForm(FlaskForm):
     answer3 = RadioField(choices=[])
     answer4 = RadioField(choices=[])
     answer5 = RadioField(choices=[])
-
     submit = SubmitField('Ответить')
