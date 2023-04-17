@@ -31,10 +31,10 @@ def soundtrack():
     filenames = []
     db_sess = db_session.create_session()
     all_films = db_sess.query(Films).all()
-    for film in db_sess.query(Films).all():
-    films_title.append(film.title)
-    soundtracks = choices(db_sess.query(Soundtracks).all(), k=5)
-    filenames.append(filename.filename)
+    # for film in db_sess.query(Films).all():
+    #     films_title.append(film.title)
+    # soundtracks = choices(db_sess.query(Soundtracks).all(), k=5)
+    # filenames.append(filename.filename)
 
     form = SoundtrackAnswerForm()
     answers = [db_sess.query(Films).filter(Films.id == soundtracks[0].film_id).first().title]
