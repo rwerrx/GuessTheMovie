@@ -1,13 +1,13 @@
 from flask_wtf import FlaskForm
 from wtforms import PasswordField, StringField, TextAreaField, SubmitField, EmailField, RadioField
-from wtforms.validators import DataRequired
+from wtforms.validators import DataRequired, InputRequired
 
 
-class AnswerForm(FlaskForm):
-    answer1 = RadioField(choices=[])
-    answer2 = RadioField(choices=[])
-    answer3 = RadioField(choices=[])
-    answer4 = RadioField(choices=[])
-    answer5 = RadioField(choices=[])
+class FramesAnswerForm(FlaskForm):
+    answer1 = RadioField(choices=[], default=1, validators=[DataRequired("123123")])
+    answer2 = RadioField(choices=[], default=1, validators=[DataRequired()])
+    answer3 = RadioField(choices=[], default=1, validators=[DataRequired()])
+    answer4 = RadioField(choices=[], default=1, validators=[DataRequired()])
+    answer5 = RadioField(choices=[], default=1, validators=[DataRequired()])
 
     submit = SubmitField('Ответить')
