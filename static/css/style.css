@@ -26,7 +26,7 @@
  margin-right: 1em !important;
 }
 .nav-link:hover{
- background: #c09669;
+ background: #932D30;
  color: #818181;
 }
 .navbar-collapse{
@@ -35,8 +35,13 @@
 .navbar-toggler{
   background:#fff !important;
 }
+.test_form{
+background: #932D30;
+text-align: center;
+}
+
 .header{
- background-image: url('static/img/headerback.jpg');
+ background-image: url('../img/headerback.jpg');
  background-attachment: fixed;
  background-size: cover;
  background-position: center;
@@ -49,4 +54,8 @@ center {
   position: absolute; /* Абсолютное позиционирование блока */
   margin-top: -225px; /* Отрицательный отступ от верхнего края страницы, должен равняться половине высоты блока со знаком минус */
   margin-left: -225px; /* Отрицательный отступ от левого края страницы, должен равняться половине высоты блока со знаком минус */
+}
+
+.hidden {
+display: none;
 }

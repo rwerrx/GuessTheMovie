@@ -10,7 +10,7 @@
     <title>{{title}}</title>
     <link rel="stylesheet" href="./static/css/style.css">
 </head>
-<body>
+<body class="header">
 <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary navbar bg-dark" data-bs-theme="dark">
         <div class="container-fluid">
@@ -26,10 +26,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active text-color" aria-current="page" href="#">нome</a>
+                        <a class="nav-link active text-color" aria-current="page" href="/">нome</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-color" href="#">Link</a>
+                        <a class="nav-link text-color" href="/play">PLAY GAME</a>
                     </li>
                 </ul>
                 <div>
@@ -48,8 +48,9 @@
 
 </header>
 <!-- Begin page content -->
-<main role="main" class="container">
+<main role="main" class="container ">
     {% block content %}{% endblock %}
 </main>
+<script type="text/javascript" src='js/main.js'></script>
 </body>
 </html>

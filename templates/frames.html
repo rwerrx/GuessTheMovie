@@ -2,7 +2,7 @@
 {% block content %}
 <h1>Угадайте фильм по кадру</h1>
 
-<form action="" method="post" novalidate>
+<form action="" method="post" novalidate class="test_form">
     <div>
         {{ form.csrf_token }}
     </div>
@@ -13,6 +13,7 @@
              alt="здесь должна была быть картинка, но не нашлась" width="400">
 
         {{ field() }}
+        {{field.label(filenames[loop.index - 1], class='hidden')}}
         {% for error in field.errors %}
         <div class="error">{{ error }}</div>
         {% endfor %}
