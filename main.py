@@ -20,7 +20,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 current_answers_frames = {}
-current_answers_sountracks = {}
+current_answers_soundtracks = {}
 
 
 @app.route('/')
@@ -81,20 +81,22 @@ def soundtrack():
         form.answer5.choices = answers5
         correct_films = []
         for elem in soundtracks:
-            correct_soundtrack = db_sess.query(Soundtracks).filter(Soundtracks.filename == elem.filename).first()
+            correct_soundtrack = db_sess.query(Soundtracks).filter(
+                Soundtracks.filename == elem.filename).first()
             correct_films.append(
                 db_sess.query(Films).filter(Films.id == correct_soundtrack.film_id).first().title)
-        current_answers_sountracks[current_user.id] = correct_films
+        current_answers_soundtracks[current_user.id] = correct_films
         return render_template('soundtrack.html', title='угадай по саундтреку', form=form,
                                filenames=[i.filename for i in soundtracks])
 
     if form.validate_on_submit():
         cnt = 0
         for i, v in enumerate(list(form)[:-2]):
-            if v.data == current_answers_sountracks[current_user.id][i]:
+            if v.data == current_answers_soundtracks[current_user.id][i]:
                 cnt += 1
                 print(cnt)
         return render_template('points.html', title='количество правильных ответов', cnt=cnt)
+
 
 @app.route('/frames', methods=['GET', 'POST'])
 @login_required
@@ -198,8 +200,6 @@ def play():
     return render_template('play.html')
 
 
-
-
 @app.route('/location')
 def location():
     return 'локация'
@@ -211,7 +211,7 @@ def rules():
 
 
 @app.route('/register', methods=['GET', 'POST'])
-def reqister():
+def register():
     if current_user.is_authenticated:
         return redirect('/')
 
@@ -228,10 +228,7 @@ def reqister():
                                    title='Регистрация',
                                    form=form,
                                    message="Такой пользователь уже есть")
-        user = User(
-            name=form.name.data,
-            email=form.email.data
-        )
+        user = User(name=form.name.data, email=form.email.data)
         user.set_password(form.password.data)
         db_sess.add(user)
         db_sess.commit()
