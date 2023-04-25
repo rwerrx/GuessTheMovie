@@ -7,20 +7,20 @@
 <br>4. Осуществить подсчет очков за каждый пройденный раунд.
 <br>5. Реализовать страницу для добавления в раунды своих саундтреков, кадров и локаций. 
 <p>Guess The Movie
-Автор проекта: Кучерова Кира
-Guess The Movie – сайт-игра, проходя которую Вы сможете понять, насколько Вы киноман.
-Реализация:
-- БД base.sqlite, которая содержит таблицы:
-	- soundtracks
-	- frames
-	- users
-	- films
- основные функции:
-   -frames
-   -soundtracks
-   -login
-   -register
-   -logout
+<br>Автор проекта: Кучерова Кира
+<br>Guess The Movie – сайт-игра, проходя которую Вы сможете понять, насколько Вы киноман.
+<br>Реализация:
+<br>- БД base.sqlite, которая содержит таблицы:
+<br>	- soundtracks
+<br>	- frames
+<br>	- users
+<br>	- films
+<br>основные функции:
+<br>   -frames
+<br>    -soundtracks
+<br>   -login
+<br>    -register
+<br>    -logout
 
-Использованные библиотеки: flask, flask_login, random, wtforms, flask_wtf
+<br> Использованные библиотеки: flask, flask_login, random, wtforms, flask_wtf
 </p>
