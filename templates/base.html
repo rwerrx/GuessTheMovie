@@ -15,9 +15,9 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary navbar bg-dark" data-bs-theme="dark">
         <div class="container-fluid">
             <font color="#97010E" size="7" face="Arial">
-                <p class="navbar-brand border border-0 text-secondary text-color text-color"><b>GUESS THE MOVIE</b></p>
+                <p class="navbar-brand border border-0 text-secondary text-color text-color text-f"><b>GUESS THE MOVIE</b></p>
             </font>
-            <a class="navbar-brand border border-0 text-color" href="{{ url_for('rules') }}">rules of the game</a>
+            <a class="navbar-brand border border-0 text-color c-button" href="{{ url_for('rules') }}">rules of the game</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -37,8 +37,8 @@
                     <a class="navbar-brand c-button" href="{{url_for('logout')}}">{{ current_user.name }}</a>
                     {% else %}
                     <p>
-                        <a class="btn bg-danger text-white" href="{{url_for('register')}}">Sign up</a>
-                        <a class="btn bg-danger opacity-25" href="{{url_for('login')}}">Sign in</a>
+                        <a class="btn c-button" href="{{url_for('register')}}">Sign up</a>
+                        <a class="btn c-button" href="{{url_for('login')}}">Sign in</a>
                     </p>
                     {% endif %}
                 </div>
