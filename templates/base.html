@@ -37,9 +37,11 @@
                     <a class="navbar-brand c-button" href="{{url_for('logout')}}">{{ current_user.name }}</a>
                     {% else %}
                     <p>
-                        <a class="btn c-button" href="{{url_for('register')}}">Sign up</a>
-                        <a class="btn c-button" href="{{url_for('login')}}">Sign in</a>
+                        <a class="btn c-button navbar-brand" href="{{url_for('register')}}">Sign up</a>
                     </p>
+                    <p><a class="btn a-button navbar-brand" href="{{url_for('login')}}">Sign in</a></p>
+
+
                     {% endif %}
                 </div>
             </div>

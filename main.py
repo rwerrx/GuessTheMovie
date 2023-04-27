@@ -1,9 +1,10 @@
 from random import shuffle, choice, sample
 
-from flask import Flask, render_template, redirect, request
+import flask
+from flask import Flask, render_template, redirect, jsonify
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 
-from data import db_session
+from data import db_session, films_api
 from data.films import Films
 from data.frames import Frames
 from data.soundtracks import Soundtracks
@@ -50,7 +51,8 @@ def soundtrack():
     answer_options3 = [db_sess.query(Films).filter(Films.id == soundtracks[2].film_id).first().title]
     answer_options4 = [db_sess.query(Films).filter(Films.id == soundtracks[3].film_id).first().title]
     answer_options5 = [db_sess.query(Films).filter(Films.id == soundtracks[4].film_id).first().title]
-    list_of_answer_options = [answer_options, answer_options2, answer_options3, answer_options4, answer_options5]
+    list_of_answer_options = [answer_options, answer_options2, answer_options3, answer_options4,
+                              answer_options5]
     list_of_forms = [form.answer1, form.answer2, form.answer3, form.answer4, form.answer5]
     for i, answer in enumerate(list_of_answer_options):
         while len(answer) != 4:
@@ -93,7 +95,8 @@ def frames():
     answer_options3 = [db_sess.query(Films).filter(Films.id == frames[2].film_id).first().title]
     answer_options4 = [db_sess.query(Films).filter(Films.id == frames[3].film_id).first().title]
     answer_options5 = [db_sess.query(Films).filter(Films.id == frames[4].film_id).first().title]
-    list_of_answer_options = [answer_options, answer_options2, answer_options3, answer_options4,answer_options5]
+    list_of_answer_options = [answer_options, answer_options2, answer_options3, answer_options4,
+                              answer_options5]
 
     list_of_forms = [form.answer1, form.answer2, form.answer3, form.answer4, form.answer5]
     for i, answers in enumerate(list_of_answer_options):
@@ -188,11 +191,30 @@ def register():
                            title='Регистрация', form=form)
 
 
+@app.errorhandler(401)
+def unauthorized(error):
+    return render_template('401.html'), 401
+
+
+@app.errorhandler(404)
+def not_found(error):
+    return render_template('404.html'), 404
+
+
+@app.errorhandler(405)
+def not_allowed(error):
+    return render_template('405.html'), 405
+
+
+@app.route('/imgmus/int:<film_id>')
+def imgmus(film_id):
+
+
 def main():
     db_session.global_init("db/base.sqlite")
     db_sess = db_session.create_session()
-
     user = db_sess.query(User).first()
+    app.register_blueprint(films_api.blueprint)
     print(user.name)
     app.run()
 

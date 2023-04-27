@@ -108,7 +108,21 @@ display: none;
   font-size: 35px;
   transition: 0.2s all ease;
 }
-
+.a-button{
+  align: center;
+  appearance: none;
+  border: 0;
+  border-radius: 5px;
+  background: #818181;
+  color: #394C60    ;
+  padding: 8px 16px;
+  font-size: 16px;
+  transition: 0.2s all ease;
+}
+.a-button:hover {
+     background: #CDCAC5;
+     transform: rotateX(30deg);
+}
 .c-button:hover {
      background: #CDCAC5;
      transform: rotateX(30deg);
