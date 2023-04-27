@@ -25,3 +25,4 @@
 
 <br> Использованные библиотеки: flask, flask_login, random, wtforms, flask_wtf
 </p>
+<br> ссылка: https://roan-funky-arrhinceratops.glitch.me/
