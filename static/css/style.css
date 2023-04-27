@@ -132,3 +132,18 @@ display: none;
      background: #CDCAC5;
      transform: rotateX(30deg);
 }
+body {
+  font-family: PT Astra Sans;
+   background-color: #818181;
+   }
+.footer {
+  background-color: #394C60;
+   position: fixed;
+   right: 0;
+   bottom: 0;
+   text-align: center;
+   width: 99%;
+   font-size: 19px;
+    font-weight: bold;
+    color: #6E7F91;
+ }
