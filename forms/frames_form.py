@@ -4,10 +4,10 @@ from wtforms.validators import DataRequired, InputRequired
 
 
 class FramesAnswerForm(FlaskForm):
-    answer1 = RadioField(choices=[], validators=[DataRequired()], validate_choice=False)
-    answer2 = RadioField(choices=[], validators=[DataRequired()], validate_choice=False)
-    answer3 = RadioField(choices=[], validators=[DataRequired()], validate_choice=False)
-    answer4 = RadioField(choices=[], validators=[DataRequired()], validate_choice=False)
-    answer5 = RadioField(choices=[], validators=[DataRequired()], validate_choice=False)
+    answer1 = RadioField(choices=[], validators=[DataRequired('choose an answer')], validate_choice=False)
+    answer2 = RadioField(choices=[], validators=[DataRequired('choose an answer')], validate_choice=False)
+    answer3 = RadioField(choices=[], validators=[DataRequired('choose an answer')], validate_choice=False)
+    answer4 = RadioField(choices=[], validators=[DataRequired('choose an answer')], validate_choice=False)
+    answer5 = RadioField(choices=[], validators=[DataRequired('choose an answer')], validate_choice=False)
 
     submit = SubmitField('Ответить')

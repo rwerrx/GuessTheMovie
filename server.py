@@ -209,7 +209,7 @@ def main():
     db_sess = db_session.create_session()
     user = db_sess.query(User).first()
     app.register_blueprint(films_api.blueprint)
-    app.run(host='0.0.0.0', port=port)
+    app.run()
 
 
 if __name__ == '__main__':
