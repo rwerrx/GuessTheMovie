@@ -21,15 +21,16 @@ font-weight: normal;
 	border-radius: 30px;
 }
 .text-f{
+
     color: #97010E;
+    text-align: center;
     font-size: 200%;
     font-family: "Castoro Titling", serif;
-	display: inline;
 	padding: 0 10px 0 0;
 	color: #6E7F91;
 	line-height: 70px;
 	border-radius: 30px;
-}
+	text-shadow: -3px 2px 1px black, 0 0 1em black;
 }
 .navbar{
  background:#a0302d;
@@ -90,20 +91,35 @@ display: none;
   align: center;
   appearance: none;
   border: 0;
-  border-radius: 5px;
+  border-radius: 2px;
   background: #394C60;
   color: #818181    ;
-  padding: 8px 16px;
+  padding: 10px 40px;
+  width: 150px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 16px;
   transition: 0.2s all ease;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 .b-button{
-  align: center;
+ align: center;
   appearance: none;
   border: 0;
-  border-radius: 5px;
+  border-radius: 2px;
+  padding: 10px 40px;
+  width: 400px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: 0.2s all ease;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   background: #394C60;
-  color: #818181    ;
+  color: #818181;
   padding: 35px 200px;
   font-size: 35px;
   transition: 0.2s all ease;
@@ -114,10 +130,32 @@ display: none;
   border: 0;
   border-radius: 5px;
   background: #818181;
-  color: #394C60    ;
-  padding: 8px 16px;
+  color: #394C60;
+  padding: 10px 16px;
   font-size: 16px;
+    width: 150px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: 0.2s all ease;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.j-button {
+  align: center;
+  appearance: none;
+  border: 0;
+  border-radius: 5px;
+  background: #394C60;
+  color: #818181    ;
+  padding: 10px 40px;
+  font-size: 16px;
+  transition:0.2s all ease;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.j-button:hover {
+     background: #CDCAC5;
+     transform: rotateX(30deg);
 }
 .a-button:hover {
      background: #CDCAC5;
@@ -146,4 +184,8 @@ body {
    font-size: 19px;
     font-weight: bold;
     color: #6E7F91;
+ }
+ .buttons-container{
+display: flex;
+justify-content: space-between;
  }

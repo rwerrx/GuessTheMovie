@@ -15,9 +15,8 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary navbar bg-dark" data-bs-theme="dark">
         <div class="container-fluid">
             <font color="#97010E" size="7" face="Arial">
-                <p class="navbar-brand border border-0 text-secondary text-color text-color text-f"><b>GUESS THE MOVIE</b></p>
+                <p class="navbar-brand border border-0 text-secondary text-color text-f"><b>GUESS THE MOVIE</b></p>
             </font>
-            <a class="navbar-brand border border-0 text-color c-button" href="{{ url_for('rules') }}">rules of the game</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -28,22 +27,24 @@
                     <li class="nav-item">
                         <a class="nav-link text-color c-button" href="{{url_for('play')}}">PLAY GAME</a>
                     </li>
+                    <li>
+                        <a class="navbar-brand border border-0 text-color c-button" href="{{ url_for('rules') }}">rules of the game</a>
+                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link active text-color c-button" aria-current="page" href="{{url_for('index')}}">нome</a>
                     </li>
-                </ul>
-                <div>
                     {% if current_user.is_authenticated %}
-                    <a class="navbar-brand c-button" href="{{url_for('logout')}}">{{ current_user.name }}</a>
-                    {% else %}
-                    <p>
+                        <a class="navbar-brand c-button" href="{{url_for('logout')}}">{{ current_user.name }}</a>
+                    <li>
+                        {% else %}
                         <a class="btn c-button navbar-brand" href="{{url_for('register')}}">Sign up</a>
-                    </p>
-                    <p><a class="btn a-button navbar-brand" href="{{url_for('login')}}">Sign in</a></p>
-
-
+                    </li>
+                    <li>
+                        <a class="btn a-button navbar-brand" href="{{url_for('login')}}">Sign in</a>
+                    </li>
                     {% endif %}
-                </div>
+                </ul>
             </div>
         </div>
     </nav>
