@@ -1,3 +1,5 @@
+ul { list-style-type: none; }
+
 @font-face {
 font-family: "abril-font";
 src: url("../fonts/AbrilFatface-Regular.ttf") format("truetype");
@@ -5,12 +7,11 @@ font-style: normal;
 font-weight: normal;
 }
 @import url('https://fonts.googleapis.com/css2?family=Castoro+Titling&display=swap');
-
-.text-color {
-    color: #97010E;
+.mdl-radio .mdl-radio__button:checked ~ .mdl-radio__outer-circle {
+  border-color: red;
 }
 .text-i {
-    font-size: 600%;
+    font-size: 400%;
     font-family: "Castoro Titling", serif;
 	display: inline;
 	background-color: rgba(0, 0, 0, 0.5);
@@ -18,9 +19,9 @@ font-weight: normal;
 	padding: 0 10px 0 0;
 	color: #394C60;
 	line-height: 14px;
-	border-radius: 30px;
+	border-radius: 10px;
 }
-.text-f{
+.text-name{
 
     color: #97010E;
     text-align: center;
@@ -31,6 +32,16 @@ font-weight: normal;
 	line-height: 70px;
 	border-radius: 30px;
 	text-shadow: -3px 2px 1px black, 0 0 1em black;
+}
+.text-f{
+    color: #97010E;
+    text-align: justify;
+    font-size: 200%;
+    font-family: "Castoro Titling", serif;
+	padding: 0 10px 0 0;
+	color: #6E7F91;
+	line-height: 70px;
+	border-radius: 30px;
 }
 .navbar{
  background:#a0302d;
@@ -67,15 +78,6 @@ list-style: none;
  background-size: cover;
  background-position: center;
 }
-center {
-  top: 50%; /* Отступ в процентах от верхнего края окна */
-  left: 50%; /* Отступ в процентах от левого края окна */
-  width: 450px; /* Ширина блока */
-  height: 450px; /* Высота блока */
-  position: absolute; /* Абсолютное позиционирование блока */
-  margin-top: -225px; /* Отрицательный отступ от верхнего края страницы, должен равняться половине высоты блока со знаком минус */
-  margin-left: -225px; /* Отрицательный отступ от левого края страницы, должен равняться половине высоты блока со знаком минус */
-}
 
 .hidden {
 display: none;
@@ -105,7 +107,7 @@ display: none;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 .b-button{
- align: center;
+  align: center;
   appearance: none;
   border: 0;
   border-radius: 2px;
@@ -120,7 +122,7 @@ display: none;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   background: #394C60;
   color: #818181;
-  padding: 35px 200px;
+
   font-size: 35px;
   transition: 0.2s all ease;
 }
